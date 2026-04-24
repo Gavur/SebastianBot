@@ -5,6 +5,9 @@
 [![MariaDB](https://img.shields.io/badge/mariadb-compatible-003545?style=for-the-badge&logo=mariadb&logoColor=white)](https://mariadb.org/)
 [![Kick API](https://img.shields.io/badge/kick-api-53FC18?style=for-the-badge&logo=kickstarter&logoColor=000000)](https://docs.kick.com/)
 [![Public Webhooks](https://img.shields.io/badge/webhooks-enabled-0f172a?style=for-the-badge&logo=webhook&logoColor=white)]()
+[![Vanilla JS](https://img.shields.io/badge/Vanilla-JS-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)]()
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-53FC18?style=for-the-badge)](CONTRIBUTING.md)
+[![Security Policy](https://img.shields.io/badge/Security-Policy-777BB4?style=for-the-badge)](SECURITY.md)
 
 Welcome to my worst ever repo which is a monument of rage and painful PHP structure to bleed your eyes. After creating this abomination I'm really not in to creating documentation but hey It's still MIT License. But if you still need help with this like you are that desperate contact me through Discord which my nick is Gavur.
 
