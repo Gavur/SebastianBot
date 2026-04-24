@@ -391,3 +391,362 @@ If you publish a fork or commercial derivative, keeping a visible reference to t
 This project depends on Kick's current public APIs, webhooks, and permissions. Some endpoints or event payloads may change as Kick evolves its platform.
 
 If something breaks after a platform change, it is usually not the dashboard being dramatic. It is usually an API change being rude.
+
+---
+
+## Türkçe Sürüm
+
+Yukarıda İngilizce girişi okumadığını biliyorum dostum, en iğrenç, en boktan hiyerarşi ve mimariye sahip repoma hoşgeldin. Kick.com içerisinde düzgün moderasyon botu bulamadın değil mi? Ben de öyle. En ufak şeyler için bile paralı üyelik istiyorlardı. Ve ben de 3 dolar vermek yerine 300 dolarlık mesai yaptım bu iğrenç şey için. Klasör yapısını fark ettin mi? Knight Online panelleri gibi hepsi aynı yerde, bu benim değil Kick'in Webhooklara cevabının bir gereği oldu, acı bir tecrübe, veri çeken her şey Api klasörüne kalan her şey root dizinde olmalı. 
+
+Önce C ile başlayıp, sonra Go'ya döndüğüm, en sonunda PHP'nin daha mantıklı olacağını düşündüğüm bu "şeyin" detayları aşağıda. Yardım gerekirse önce dua etmeyi dene, baktın olmuyor bir arkadaşına danış, hala olmadıysa bana ulaş Discord üzerinden, nickim Gavur. Ulaştığında yardımı garanti etmiyorum, ama mutlu olacağıma emin olabilirsin. Sadece bu çileyi ben çekmiş olmayacağım. Şimdiden kolay gelsin.
+
+
+
+BotDash; PHP + MariaDB ile çalışan, Kick sohbet moderasyonu, canlı etkinlik takibi, komut otomasyonu, takipçi zekası, paylaşılan ban ağı, otomatik bot bildirimleri ve yayıncı hayatını toparlayan pek çok yardımcı aracı tek yerde birleştiren bir kontrol merkezidir.
+
+### Ortam
+
+#### Ekran Görüntüleri
+
+Yukarıdaki ekran görüntüleri bölümü doğrudan kullanılabilir.
+
+#### Altathon Zamanlayıcısı, Şarkı İsteği ve Performans Repertuarı Araçları İçin Tanıtım Videoları
+
+Yukarıdaki video bağlantıları doğrudan kullanılabilir.
+
+## Bu Proje Ne Yapar?
+
+BotDash, tek bir panelden Kick kanalını uçtan uca yönetmek için tasarlandı:
+
+- Canlı sohbet akışını anlık izleme
+- Mesaj silme, uzaklaştırma, banlama ve ban kaldırma denetimleri
+- Mesaj ve moderasyon geçmişiyle kullanıcı profilleri
+- Canlı yayın durumu, yayın süresi, kategori ve izleyici istatistikleri
+- Sohbet komutları ve zamanlayıcı komutları için otomasyon yönetimi
+- Takipçi analizi ve geçmiş takipçi detayları
+- Filtreleme, arama ve kullanıcı detayıyla tam etkinlik geçmişi
+- İçe/dışa aktarma ve delil takibi olan paylaşılan ban ağı
+- Takip, abonelik, yeniden abonelik, kick bağışı, ban, uzaklaştırma ve benzeri olaylar için tetiklenen bot bildirimleri
+- Sadakat, şarkı isteği, repertuar ve altathon modülleriyle hazır genişletilebilir altyapı
+
+## Özellikler
+
+### Canlı Sohbet Moderasyonu
+
+- Gösterge panelinde anlık Kick sohbet akışı
+- Mesaj atanların rozetlerini isimlerinin yanında gösterme
+- Kullanıcı adına tıklayınca ayrıntılı profil penceresi açılması
+- Mesaj silme, uzaklaştırma, banlama ve ban kaldırma işlemleri
+- Tarayıcı uyarısı yerine özel onay pencereleriyle temiz moderasyon akışı
+- Kalan süreyi anlık geri sayan "Aktif Uzaklaştırmalar" bölümü ve tek tuşla ceza kaldırma
+
+### Kullanıcı Profilleri
+
+Panelin herhangi bir yerinde kullanıcı adına tıklayınca gelen detay ekranında:
+
+- Toplam gönderilen mesaj sayısı
+- Silinen mesaj sayısı
+- Toplam ban sayısı
+- Toplam uzaklaştırma sayısı
+- Güncel ban/uzaklaştırma durumu
+- Uzaklaştırma bitişine kalan canlı sayaç
+- Takip tarihi ve takip anında yayın açık mı kapalı mı bilgisi
+- Takip anındaki yayın kategorisi
+- Tüm moderasyon geçmişi
+- Mesaj geçmişi içinde arama
+- Panel içi yerel roller (VIP, OG, Moderatör) için kontrol araçları
+
+### Canlı Yayın İstatistikleri
+
+Panel ayrıca yayın seviyesinde şu verileri izler:
+
+- Yayında/çevrimdışı durumu
+- Gerçek zamanlı yayın süresi
+- İzleyici sayısı
+- Yayın kategorisi
+- Son 5 saatte toplam mesaj sayısı
+- Son 5 saatte konuşan farklı kullanıcı sayısı
+- Toplam takipçi sayısı
+- Son 24 saatte yeni takipler
+- Son 24 saatte yeniden takipler
+
+### Komut Sistemi
+
+`commands.php` sayfasında:
+
+- `!discord` gibi sohbet komutları oluşturma
+- Her X dakikada otomatik yazan zamanlayıcı komutlar oluşturma
+- Var olan komutları düzenleme
+- Komut silme
+- Silmeden aktif/pasif yapma
+- Komut bazlı bekleme süresi (cooldown) ayarlama
+- Şablon değişkenleri kullanma:
+  - `$(user)`
+  - `$(channel)`
+  - `$(count)`
+  - `$(score)`
+
+Zamanlayıcı komutları cron ile çalışır, sohbet komutları ise kullanıcı mesajıyla tetiklenir.
+
+### Takipçiler Sayfası
+
+`followers.php` görünümünde:
+
+- Takipçi adı
+- Takip tarihi ve saati
+- Toplam mesaj sayısı
+- Anlık durum: temiz, banlı veya uzaklaştırılmış
+- Ayrıntılı kullanıcı penceresi
+- Banla / uzaklaştır / uzaklaştırmayı kaldır işlemleri
+- Mesaj geçmişi ve moderasyon geçmişi
+- Takip anının bağlamı (yayın açık/kapalı ve kategori)
+
+### Etkinlikler Sayfası
+
+`events.php` sayfası tüm etkinlikleri yeniden eskiye listeler:
+
+- Takipler
+- Yeniden takipler
+- Abonelikler
+- Yenilemeler
+- Hediye abonelikler
+- Kick bağışları
+- Host olayları
+- Ban odaklı olaylar
+
+Ayrıca şunları sağlar:
+
+- Arama
+- Etkinlik türüne göre filtreleme
+- Tarih aralığı filtreleme
+- Tıklanabilir kullanıcı adları
+- Sohbet/Takipçiler ile ortak çalışan kullanıcı detay penceresi
+
+### Paylaşılan Ban Ağı
+
+`shareban.php` sayfası, birden fazla kanal için ortak güvenlik havuzu sunar.
+
+İçerdiği özellikler:
+
+- Ortak kanal kayıt alanı
+- Kanal bazlı kabul edilen ban sebepleri
+- Sebep bazlı delil zorunluluğu
+- Sebep bazlı asgari delil sayısı
+- Delil mesajlarıyla saklanan ortak ban kayıtları
+- Sıralama ve filtreleme
+- Toplu silme
+- Düzenleme ve tekil silme
+- Önizleme ve onaylı JSON içe aktarma
+- CSV, JSON ve TXT dışa aktarma
+- Yapılandırılmış dışa aktarma biçimi:
+  - kullanıcı adı
+  - sebep
+  - ana kanal
+  - delil
+  - moderatör
+  - tarih
+
+### Bildirim Mesajları
+
+`notifychat.php` sayfasında şu olaylar için bot mesajlarını ayrı ayrı tanımlayabilirsin:
+
+- Yeni takip
+- Yeniden takip
+- Yeni abone
+- Abonelik yenileme
+- Kick bağışı
+- Uzaklaştırma
+- Uzaklaştırma kaldırma
+- Ban
+- Ban kaldırma
+
+Her bildirim bağımsız şekilde açılıp kapatılabilir, düzenlenebilir ve kaydedilebilir.
+
+### Sadakat, Altathon, Şarkı İsteği ve Repertuar Modülleri
+
+Projede ek olarak yayın otomasyonu için şu modüller de bulunur:
+
+- Sadakat puanı ve seviye sistemi
+- Altathon zamanlayıcı mantığı
+- Şarkı istek kuyruğu
+- Repertuar / peçete altyapısı
+
+Kısacası, sıradan bir panel yerine mini bir yayın komuta merkezi kuruldu.
+
+## Teknoloji Yığını
+
+- PHP
+- MariaDB / MySQL
+- Kick Geliştirici Açık Uygulama Arayüzü
+- Kick webhook altyapısı
+- Kick sohbet uygulama arayüzü
+- Açık panelde canlı sohbet güncellemesi için Pusher WebSocket
+- Apache / Plesk / Nginx uyumlu dağıtım
+
+## Gereksinimler
+
+- PHP 8.1 veya üstü
+- MariaDB 10.4+ ya da MySQL 8+
+- PHP içinde cURL etkin
+- PDO MySQL etkin
+- `mod_rewrite` açık Apache
+- Webhook teslimatı için herkese açık HTTPS alan adı
+- Kick geliştirici uygulaması
+- Geliştirici erişimi olan geçerli Kick hesabı
+
+## Kurulum
+
+### 1. Projeyi kopyala veya sunucuya yükle
+
+Projeyi web kök dizinine ya da herkese açık bir alt alana yerleştir.
+
+### 2. `config.php` dosyasını düzenle
+
+`config.php` içinde şu değerleri ayarla:
+
+- Kick istemci kimliği
+- Kick istemci gizli anahtarı
+- Yayıncı kullanıcı kimliği
+- Geri dönüş adresi
+- Veritabanı sunucusu
+- Veritabanı adı
+- Veritabanı kullanıcı adı
+- Veritabanı parolası
+
+Dosya, ilk çalıştırmada gerekli tabloları otomatik oluşturur.
+
+### 3. Kick uygulama ayarlarını yapılandır
+
+Kick Geliştirici panelinde uygulaman için şunları doğrula:
+
+- Geri dönüş adresi doğru ayarlı
+- Webhook etkin
+- Kullanacağın özelliklere uygun izin kapsamları açık
+
+Örnek geri dönüş adresi:
+
+```text
+https://alan-adin.com/auth/callback
+```
+
+Örnek webhook adresi:
+
+```text
+https://alan-adin.com/webhook.php
+```
+
+### 4. Uygulamayı yetkilendir
+
+`login.php` dosyasını açıp OAuth akışını tamamla.
+
+Uygulama belirteçleri veritabanında saklanır; böylece panel, webhook işleyicisi ve cron işleri aynı kimlik bilgilerini ortak kullanır.
+
+### 5. Webhook olaylarına abone ol
+
+Yetkilendirmeden sonra `subscribe.php` dosyasını bir kez çalıştır.
+
+### 6. Cron ayarla
+
+`cron_timers.php` için her dakika çalışan bir cron görevi ekle.
+
+Örnek:
+
+```bash
+* * * * * php /var/www/vhosts/alan-adin.com/httpdocs/cron_timers.php
+```
+
+Sunucu dizin yapına göre yolu güncelle.
+
+## Önerilen Kick Webhook Olayları
+
+Projede kullanılan veya desteklenen olay türleri:
+
+- `chat.message.sent`
+- `channel.followed`
+- `channel.subscription.new`
+- `channel.subscription.renewal`
+- `channel.subscription.gifts`
+- `livestream.status.updated`
+- `livestream.metadata.updated`
+- `moderation.banned`
+- `kicks.gifted`
+- `channel.reward.redemption.updated`
+
+## Sayfa Haritası
+
+Ana sayfalar:
+
+- `index.php` - gösterge özeti
+- `chat.php` - canlı moderasyon konsolu
+- `commands.php` - bot komut düzenleyicisi
+- `followers.php` - takipçi zekası
+- `events.php` - tam etkinlik geçmişi
+- `shareban.php` - paylaşılan ban ağı
+- `notifychat.php` - bildirim mesajları yönetimi
+- `subscribe.php` - webhook abonelik kurulumu
+- `login.php` - OAuth giriş
+- `callback.php` - OAuth geri dönüş
+
+Yardımcı uç noktalar `api/` klasöründe yer alır.
+
+## Güvenlik Notları
+
+- Projeyi herkese açık paylaşacaksan `config.php` içindeki gizli bilgileri ortam değişkenine veya yerel yapılandırma dosyasına taşı.
+- Kick'in veri iletebilmesi için webhook uç noktası herkese açık kalmalı.
+- Cloudflare gibi koruma katmanı kullanıyorsan webhook yollarını güvenlik doğrulama engellerinden muaf tut.
+- `.htaccess` içinde yönetici sayfaları için IP kısıtlama desteği var; ancak webhook teslimatı için ilgili yol erişilebilir kalmalı.
+
+## Zaman Dilimi Notu
+
+Panel, PHP tarafında `Europe/Istanbul` zaman dilimini kullanır ve MySQL zaman işlemlerini buna uyumlu hale getirir.
+
+Bu önemli; çünkü bir dakikalık uzaklaştırmanın bir saatlik cezaya dönüşmesi kimsenin görmek isteyeceği bir sürpriz değildir.
+
+## Veri Saklama
+
+Operasyon verileri MariaDB tablolarında saklanır, örnekler:
+
+- `chat_messages`
+- `chat_users`
+- `ban_records`
+- `channel_events`
+- `bot_commands`
+- `bot_settings`
+- `chat_notifications`
+- `shared_channels`
+- `shared_bans`
+- ayrıca sadakat, altathon, şarkı ve repertuar modülleri için destek tabloları
+
+## Bu Projeyi Farklı Kılan Nedir?
+
+Bu yalnızca bir sohbet kaplaması veya oyuncak bot değil. Kick için tam kapsamlı bir moderasyon ve analiz yüzeyi sunar:
+
+- kalıcı geçmiş
+- canlı olay işleme
+- rol farkındalığı olan moderasyon
+- ortak güvenlik araçları
+- komut otomasyonu
+- bildirim şablonlama
+- ve tarayıcına "vardiyalı çalışıyor" hissi verecek kadar güçlü panel yapısı
+
+## Katkı
+
+Katkı isteklerine açığım.
+
+Bir modülü iyileştirirken mevcut üslubu, düzeni ve kullanım kolaylığını korumaya çalış. Panelin zaten tek başına küçük bir ofis kadar karakteri var.
+
+## Lisans
+
+Bu proje MIT Lisansı ile lisanslanmıştır.
+
+MIT lisans metni [LICENSE](LICENSE) dosyasında yer alır.
+
+Projeyi kullanırken, değiştirirken veya ticari üründe kullanırken kaynak belirtmeniz rica edilir.
+
+Çatallayıp yayınlarsan veya ticari türev çıkarırsan görünür bir kaynak referansı bırakman beklenir. Böylece acıyı tek başıma yaşamam.
+
+## Sorumluluk Reddi
+
+Bu proje Kick platformunun güncel açık uygulama arayüzlerine, webhook yapılarına ve izin modeline bağlıdır. Kick tarafında uç noktalar veya olay yükleri değiştikçe bazı özellikler etkilenebilir.
+
+Platform güncellemesinden sonra bir şey bozulursa, çoğu zaman sorun panelin huysuzluğu değil; uygulama arayüzünün şartları yeniden yazmasıdır.
