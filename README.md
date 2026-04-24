@@ -8,9 +8,13 @@
 
 Welcome to my worst ever repo which is a monument of rage and painful PHP structure to bleed your eyes. After creating this abomination I'm really not in to creating documentation but hey It's still MIT License. But if you still need help with this like you are that desperate contact me through Discord which my nick is Gavur.
 
+
+
+
 A Kick.com moderation dashboard for streamers who want their chat handled like a professional operation, not a sticky note and a prayer.
 
 BotDash is a PHP + MariaDB control panel for Kick chat moderation, live events, command automation, follower intelligence, shared ban management, automated bot notifications, and a few quality-of-life tools that make your channel look far more organized than it probably deserves.
+
 
 ## What This Does
 
