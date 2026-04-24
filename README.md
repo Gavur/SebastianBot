@@ -8,13 +8,52 @@
 
 Welcome to my worst ever repo which is a monument of rage and painful PHP structure to bleed your eyes. After creating this abomination I'm really not in to creating documentation but hey It's still MIT License. But if you still need help with this like you are that desperate contact me through Discord which my nick is Gavur.
 
-
-
-
 A Kick.com moderation dashboard for streamers who want their chat handled like a professional operation, not a sticky note and a prayer.
 
 BotDash is a PHP + MariaDB control panel for Kick chat moderation, live events, command automation, follower intelligence, shared ban management, automated bot notifications, and a few quality-of-life tools that make your channel look far more organized than it probably deserves.
 
+## Media
+
+### Screenshots
+
+<table>
+  <tr>
+    <td><img src="docs/screenshots/doc%20(1).png" alt="Screenshot 1" width="100%"></td>
+    <td><img src="docs/screenshots/doc%20(2).png" alt="Screenshot 2" width="100%"></td>
+    <td><img src="docs/screenshots/doc%20(3).png" alt="Screenshot 3" width="100%"></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/doc%20(4).png" alt="Screenshot 4" width="100%"></td>
+    <td><img src="docs/screenshots/doc%20(5).png" alt="Screenshot 5" width="100%"></td>
+    <td><img src="docs/screenshots/doc%20(6).png" alt="Screenshot 6" width="100%"></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/doc%20(7).png" alt="Screenshot 7" width="100%"></td>
+    <td><img src="docs/screenshots/doc%20(8).png" alt="Screenshot 8" width="100%"></td>
+    <td><img src="docs/screenshots/doc%20(9).png" alt="Screenshot 9" width="100%"></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/doc%20(10).png" alt="Screenshot 10" width="100%"></td>
+    <td><img src="docs/screenshots/doc%20(11).png" alt="Screenshot 11" width="100%"></td>
+    <td><img src="docs/screenshots/doc%20(12).png" alt="Screenshot 12" width="100%"></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/doc%20(13).png" alt="Screenshot 13" width="100%"></td>
+    <td><img src="docs/screenshots/doc%20(14).png" alt="Screenshot 14" width="100%"></td>
+    <td><img src="docs/screenshots/doc%20(15).png" alt="Screenshot 15" width="100%"></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/doc%20(16).png" alt="Screenshot 16" width="100%"></td>
+    <td><img src="docs/screenshots/doc%20(17).png" alt="Screenshot 17" width="100%"></td>
+    <td></td>
+  </tr>
+</table>
+
+### Demo of Subhaton Timer, Song Request widget & Performing Repertoire widget for OBS Videos
+
+- [2026-04-24 11-20-21.mp4](docs/video/2026-04-24%2011-20-21.mp4)
+- [2026-04-24 12-22-41.mp4](docs/video/2026-04-24%2012-22-41.mp4)
+- [2026-04-24 13-37-37.mp4](docs/video/2026-04-24%2013-37-37.mp4)
 
 ## What This Does
 
@@ -293,7 +332,6 @@ Utility endpoints live in `api/`.
 
 ## Security Notes
 
-- Do not commit real client secrets or database credentials to a public repository.
 - If you publish this project publicly, replace secrets in `config.php` with environment variables or a local-only configuration file.
 - The webhook endpoint must remain publicly accessible for Kick to deliver events.
 - If you use Cloudflare or other protection layers, ensure webhook routes are exempted from challenge rules.
@@ -344,9 +382,9 @@ This project is licensed under the MIT License.
 
 The MIT License text is included in the [LICENSE](LICENSE) file.
 
-Attribution is requested when you use, modify, or commercially ship this project. The MIT License itself does not require attribution, so treat this as a project request rather than a legal restriction.
+Attribution is requested when you use, modify, or commercially ship this project.
 
-If you publish a fork or commercial derivative, keeping a visible reference to the original project is appreciated.
+If you publish a fork or commercial derivative, keeping a visible reference to this original project is required. So I'll know that you suffer too but not legally.
 
 ## Disclaimer
 
