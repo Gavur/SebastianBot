@@ -1,0 +1,10 @@
+
+
+RewriteRule ^auth/callback/?$ callback.php [QSA,L]
+
+Require ip YOUROWNIP
+
+
+<Files "webhook.php">
+    Require all granted
+</Files>
