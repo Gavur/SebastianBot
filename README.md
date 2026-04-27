@@ -414,7 +414,7 @@ BotDash; PHP + MariaDB ile çalışan, Kick sohbet moderasyonu, canlı etkinlik 
 
 Yukarıdaki ekran görüntüleri bölümü doğrudan kullanılabilir.
 
-#### Altathon Zamanlayıcısı, Şarkı İsteği ve Performans Repertuarı Araçları İçin Tanıtım Videoları
+#### Subhaton Zamanlayıcısı, Şarkı İsteği ve Performans Repertuarı Araçları İçin Tanıtım Videoları
 
 Yukarıdaki video bağlantıları doğrudan kullanılabilir.
 
@@ -431,7 +431,7 @@ BotDash, tek bir panelden Kick kanalını uçtan uca yönetmek için tasarlandı
 - Filtreleme, arama ve kullanıcı detayıyla tam etkinlik geçmişi
 - İçe/dışa aktarma ve delil takibi olan paylaşılan ban ağı
 - Takip, abonelik, yeniden abonelik, kick bağışı, ban, uzaklaştırma ve benzeri olaylar için tetiklenen bot bildirimleri
-- Sadakat, şarkı isteği, repertuar ve altathon modülleriyle hazır genişletilebilir altyapı
+- Sadakat, şarkı isteği, repertuar ve Subhaton modülleriyle hazır genişletilebilir altyapı
 
 ## Özellikler
 
@@ -566,12 +566,12 @@ Ayrıca şunları sağlar:
 
 Her bildirim bağımsız şekilde açılıp kapatılabilir, düzenlenebilir ve kaydedilebilir.
 
-### Sadakat, Altathon, Şarkı İsteği ve Repertuar Modülleri
+### Sadakat, Subathon, Şarkı İsteği ve Repertuar Modülleri
 
 Projede ek olarak yayın otomasyonu için şu modüller de bulunur:
 
 - Sadakat puanı ve seviye sistemi
-- Altathon zamanlayıcı mantığı
+- Subhaton zamanlayıcı mantığı
 - Şarkı istek kuyruğu
 - Repertuar / peçete altyapısı
 
@@ -719,7 +719,7 @@ Operasyon verileri MariaDB tablolarında saklanır, örnekler:
 - `chat_notifications`
 - `shared_channels`
 - `shared_bans`
-- ayrıca sadakat, altathon, şarkı ve repertuar modülleri için destek tabloları
+- ayrıca sadakat, Subhaton, şarkı ve repertuar modülleri için destek tabloları
 
 ## Bu Projeyi Farklı Kılan Nedir?
 
